@@ -25,10 +25,6 @@ Welcome to the **E-Commerce Application** project! This project is a full-stack 
 - **User Authentication**: The application has a complete authentication system including login, registration, and token verification.
 - **Protected Routes**: The routes for admin and seller pages are protected to ensure that only authorized users can access them.
 
-### 5. Responsive UI
-- The user interface is responsive, ensuring that the application works smoothly across different devices, including desktops and mobile phones.
-- **Sticky Footer**: A sticky footer is implemented so that it remains at the bottom of the page without overlapping the content.
-
 ## Tech Stack
 
 ### Frontend
@@ -37,7 +33,6 @@ Welcome to the **E-Commerce Application** project! This project is a full-stack 
 - **TypeScript** for type safety
 - **React Router** for page navigation
 - **Tailwind CSS** for styling
-- **Lottie** for animations
 
 ### Backend
 - **Node.js** and **Express.js**
@@ -59,38 +54,39 @@ To run this project locally, follow these steps:
 2. **Install dependencies**
    ```sh
    npm install
+   yarn install
    ```
 
 3. **Environment Variables**
-   Create a `.env` file in the root directory and add the necessary environment variables:
+   Create a `.env` file in the backend directory and add the necessary environment variables:
    ```env
-   TOKEN=your_jwt_secret
-   PORT=4040
+   TOKEN="your_jwt_secret"
    ```
 
 4. **Run the backend server**
    ```sh
-   npm run server
+   yarn backend:serve
    ```
 
 5. **Run the frontend client**
    ```sh
-   npm start
+   yarn frontend:dev
    ```
 
 6. **Access the Application**
-   Open your browser and navigate to `http://localhost:3000` to see the application in action.
+   Open your browser and navigate to `http://localhost:5173` to see the application in action.
+   Url List of this App:
+   ```
+   http://localhost:5173/login
+   http://localhost:5173/register
+   http://localhost:5173/admin
+   http://localhost:5173/seller
+   ```
 
 ## Demo Video
 
 Check out the video walkthrough of the project showcasing the features implemented:
 [Video Link](https://youtu.be/example-video-link)
-
-## Future Improvements
-- **Payment Gateway Integration**: To handle online payments directly in the application.
-- **More Role Types**: Adding different user roles like super admin or moderators.
-- **Enhanced UI/UX**: Further enhance the styling and animations for a more immersive shopping experience.
-- **Product Reviews**: Allow users to add reviews and ratings to products.
 
 ## Conclusion
 This E-Commerce Application is a comprehensive project designed for a seamless shopping experience with dynamic product management by both admins and sellers. The role-based access ensures the security of sensitive operations, and the responsive design ensures accessibility across devices.
