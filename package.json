@@ -1,0 +1,33 @@
+{
+  "name": "advanced-state-management-with-redux-toolkit-quest",
+  "packageManager": "yarn@4.5.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "yarn workspace @advanced-state-management-with-redux-toolkit-quest/frontend format && yarn workspace @advanced-state-management-with-redux-toolkit-quest/backend format",
+    "lint": "yarn workspace @advanced-state-management-with-redux-toolkit-quest/frontend lint && yarn workspace @advanced-state-management-with-redux-toolkit-quest/backend lint",
+    "frontend:dev": "yarn workspace @advanced-state-management-with-redux-toolkit-quest/frontend dev",
+    "backend:serve": "yarn workspace @advanced-state-management-with-redux-toolkit-quest/backend serve"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@heroicons/react": "^2.1.5",
+    "axios": "^1.7.7",
+    "framer-motion": "^11.11.1",
+    "lottie-react": "^2.4.0",
+    "react-slick": "^0.30.2",
+    "react-spinners": "^0.14.1",
+    "react-toastify": "^10.0.5"
+  },
+  "devDependencies": {
+    "@types/react-slick": "^0.23.13",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.12",
+    "tailwindcss": "^3.4.13"
+  }
+}

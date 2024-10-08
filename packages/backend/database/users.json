@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "email": "123@123.123",
+    "password": "123",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "username": "321",
+    "email": "321@321.321",
+    "password": "$2a$10$u2m/XQxhb7S1YzPPh49lNuu95XnngDxpa/QDuwnB68nM4OjieMobC",
+    "role": "admin"
+  },
+  {
+    "id": 3,
+    "username": "123",
+    "email": "123@123",
+    "password": "123",
+    "role": "shopper"
+  },
+  {
+    "id": 4,
+    "username": "seller1",
+    "email": "seller1@123.123",
+    "password": "$2a$10$V0qospN2FE9KpJTNCtnPIO7Q2dlx7MdIleMcOq/vZe6g9HhuhFrO6",
+    "role": "seller"
+  },
+  {
+    "id": 5,
+    "username": "seller2",
+    "email": "seller2@123.123",
+    "password": "$2a$10$w/ShMRKQdfnjDO9UWpCEa.n4pA.rmjofgFc.PUOzvnWTXQK1VluLC",
+    "role": "seller"
+  }
+]
