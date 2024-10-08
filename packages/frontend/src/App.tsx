@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { refreshAuthentication } from "./features/slices/authSlice";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import Footer from "./components/Footer";
 import ShopPage from "./pages/main/ShopPage";
 import AdminPage from "./pages/main/AdminPage";
 import SellerPage from "./pages/main/SellerPage";
@@ -46,7 +45,6 @@ const App = () => {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
     </Router>
   );
 };

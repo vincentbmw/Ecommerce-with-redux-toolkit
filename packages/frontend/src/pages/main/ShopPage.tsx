@@ -13,6 +13,7 @@ import {
   decreaseCartItemQuantityLocal,
   increaseCartItemQuantityLocal
 } from '../../features/slices/productSlice';
+import Footer from "../../components/Footer";
 import { ProductCard } from '../../components/ProductCard';
 import { DetailProduct } from '../../components/DetailProduct';
 import { CategoryFilter } from '../../components/CategoryFilter';
@@ -235,87 +236,91 @@ const ShopPage: React.FC = () => {
   }, [filteredProducts, searchTerm]);
 
   return (
-    <div className="container mx-auto px-2 py-8">
-      <h1 className="text-2xl font-bold mb-8">Shop</h1>
+    <div className="flex flex-col min-h-screen">
+      <div className="container mx-auto px-2 py-8 flex-grow">
+        <h1 className="text-2xl font-bold mb-8">Shop</h1>
 
-      <NavBar
-        cart={cart}
-        handleRemove={handleRemoveFromCart}
-        handleDecrease={handleDecrease}
-        handleIncrease={handleIncrease}
-        handleCheckout={handleCheckout}
-      />
-
-      <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-        <div className="w-full md:w-1/3 mb-4 md:mb-0">
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={searchTerm}
-            onChange={handleSearch}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div className="w-full md:w-1/3 mb-4 md:mb-0">
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={handleCategoryChange}
-          />
-        </div>
-
-        <div className="w-full md:w-1/3">
-          <select
-            value={sortOrder}
-            onChange={handleSortChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Sort by</option>
-            <option value="asc">Price: Low to High</option>
-            <option value="desc">Price: High to Low</option>
-          </select>
-        </div>
-      </div>
-
-      {showNoResultsAnimation ? (
-        <div className="flex justify-center items-center h-80">
-          <Lottie
-            animationData={searchAnim}
-            loop
-            autoplay
-            className="mt-20"
-          />
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {filteredProducts.map((product: Product) => (
-            <div
-              key={product.id}
-              className="relative cursor-pointer"
-              onClick={() => handleProductClick(product)}
-            >
-              <ProductCard
-                product={product}
-                wishlist={wishlist}
-                onAddToCart={handleAddToCart}
-                onAddToWishlist={handleAddToWishlist}
-                quantity={handleCheckQuantity(product.id)}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {selectedProduct && (
-        <DetailProduct
-          product={selectedProduct}
-          onClose={handleClosePopup}
-          onAddToCart={handleAddToCart}
-          onAddToWishlist={handleAddToWishlist}
+        <NavBar
+          cart={cart}
+          handleRemove={handleRemoveFromCart}
+          handleDecrease={handleDecrease}
+          handleIncrease={handleIncrease}
+          handleCheckout={handleCheckout}
         />
-      )}
-      <ToastContainer />
+
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+          <div className="w-full md:w-1/3 mb-4 md:mb-0">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div className="w-full md:w-1/3 mb-4 md:mb-0">
+            <CategoryFilter
+              categories={categories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={handleCategoryChange}
+            />
+          </div>
+
+          <div className="w-full md:w-1/3">
+            <select
+              value={sortOrder}
+              onChange={handleSortChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">Sort by</option>
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        {showNoResultsAnimation ? (
+          <div className="flex justify-center items-center h-64">
+            <Lottie
+              animationData={searchAnim}
+              loop
+              autoplay
+              className="h-48 w-48"
+              style={{ marginBottom: '-4rem' }}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {filteredProducts.map((product: Product) => (
+              <div
+                key={product.id}
+                className="relative cursor-pointer"
+                onClick={() => handleProductClick(product)}
+              >
+                <ProductCard
+                  product={product}
+                  wishlist={wishlist}
+                  onAddToCart={handleAddToCart}
+                  onAddToWishlist={handleAddToWishlist}
+                  quantity={handleCheckQuantity(product.id)}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {selectedProduct && (
+          <DetailProduct
+            product={selectedProduct}
+            onClose={handleClosePopup}
+            onAddToCart={handleAddToCart}
+            onAddToWishlist={handleAddToWishlist}
+          />
+        )}
+        <ToastContainer />
+      </div>
+      <Footer />
     </div>
   );
 };
