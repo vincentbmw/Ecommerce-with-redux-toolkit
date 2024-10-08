@@ -30,7 +30,7 @@ const Login = () => {
       if (result) {
         switch (result.role) {
           case 'shopper':
-            navigate("/shop", { replace: true });
+            navigate("/", { replace: true });
             break;
           case 'seller':
             navigate("/seller", { replace: true });
@@ -39,7 +39,7 @@ const Login = () => {
             navigate("/admin", { replace: true });
             break;
           default:
-            navigate("/shop", { replace: true });
+            navigate("/", { replace: true });
         }
       }
     } catch (err: any) {
