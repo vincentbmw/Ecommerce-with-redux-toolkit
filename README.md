@@ -87,7 +87,7 @@ To run this project locally, follow these steps:
 ## Demo Video
 
 Check out the video walkthrough of the project showcasing the features implemented:
-[Video Link](https://youtu.be/example-video-link)
+[Video Link](https://drive.google.com/file/d/1LYf29yEg6zI1kVN4-TA5pTFO6mup8EIF/view?usp=sharing)
 
 ## Conclusion
 This E-Commerce Application is a comprehensive project designed for a seamless shopping experience with dynamic product management by both admins and sellers. The role-based access ensures the security of sensitive operations, and the responsive design ensures accessibility across devices.
