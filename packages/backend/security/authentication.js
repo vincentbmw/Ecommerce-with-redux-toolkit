@@ -20,7 +20,7 @@ const tokenVerification = (req, res, next) => {
 		const decoded = jwt.verify(token, config.TOKEN);
 		req.user = decoded;
 	} catch (_err) {
-		console.error("Failed to authenticate token:", _err.message); // Cetak pesan error
+		console.error("Failed to authenticate token:", _err.message);
 		return res.status(401).send({
 			ok: false,
 			message: "Failed to authenticate token.",

@@ -29,7 +29,6 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
 
   if (!response.ok) throw new Error('Failed to fetch products');
   const data = await response.json();
-  console.log(data.products);
   return data.products;
 });
 
@@ -319,7 +318,7 @@ export const fetchWishlist = createAsyncThunk('products/fetchWishlist', async (_
   }
 });
 
-export const buyProduct = createAsyncThunk('products/buyProduct', async (productId: number, { getState }) => {
+export const buyProduct = createAsyncThunk('products/buyProduct', async ({ productId, quantity }: { productId: number; quantity: number }, { getState }) => {
   const state = getState() as RootState;
   const user = state.auth.user;
   const tokenData = sessionStorage.getItem('user');
@@ -348,7 +347,7 @@ export const buyProduct = createAsyncThunk('products/buyProduct', async (product
       'Authorization': `Bearer ${token}`
     },
     credentials: 'include',
-    body: JSON.stringify({ productId }),
+    body: JSON.stringify({ productId, quantity }),
   });
 
   if (!response.ok) throw new Error('Failed to buy product');
@@ -447,7 +446,6 @@ const productSlice = createSlice({
   },
 });
 
-// Export the new action creators
 export const { increaseCartItemQuantityLocal, decreaseCartItemQuantityLocal, removeCartItemLocal, removeFromWishlistLocal } = productSlice.actions;
 
 export default productSlice.reducer;

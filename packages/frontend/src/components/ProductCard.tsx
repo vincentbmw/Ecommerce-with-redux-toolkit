@@ -38,13 +38,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
         
         <div className="mt-auto flex justify-between items-center">
           <div className="flex flex-col items-start">
-            {product.quantity > 0 ? (
-              <span className="text-sm text-gray-500 font-medium mb-1">
-                QTY: {quantity}
-              </span>
-            ) : (
+            {isSoldOut ? (
               <span className="text-sm text-red-600 font-medium mb-1">
                 Sold Out
+              </span>
+            ) : (
+              <span className="text-sm text-gray-500 font-medium mb-1">
+                QTY: {quantity}
               </span>
             )}
             <p className="text-blue-600 font-bold">${product.price.toFixed(2)}</p>

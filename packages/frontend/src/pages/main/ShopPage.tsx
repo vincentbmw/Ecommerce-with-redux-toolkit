@@ -87,9 +87,9 @@ const ShopPage: React.FC = () => {
   };
 
   const handleAddToCart = async (productId: number) => {
-    const product = products.find((item) => item.id === productId);
+    const productIndex = products.findIndex((item) => item.id === productId);
 
-    if (!product || product.quantity === 0 || product.quantity === null) {
+    if (productIndex === -1 || products[productIndex].quantity === 0) {
       toast.error('This product is sold out');
       return;
     }
@@ -106,6 +106,7 @@ const ShopPage: React.FC = () => {
       console.error('Failed to add item to cart:', error);
     }
   };
+
 
   const handleAddToWishlist = async (productId: number) => {
     if (!user || !token) {
@@ -153,62 +154,60 @@ const ShopPage: React.FC = () => {
   };
 
   const handleIncrease = (productId: number) => {
-  const productInCart = cart.find((item) => item.id === productId);
-  const productInList = products.find((product) => product.id === productId);
+    const productInCart = cart.find((item) => item.id === productId);
+    const productInList = products.find((product) => product.id === productId);
 
-  if (productInList && productInCart) {
-    if (productInCart.quantity < productInList.quantity) {
-      dispatch(increaseCartItemQuantityLocal(productId));
-      const updatedCart = cart.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      setCart(updatedCart);
-    } else {
-      toast.error("Quantity cannot exceed available stock.");
+    if (productInList && productInCart) {
+      if (productInCart.quantity < productInList.quantity) {
+        dispatch(increaseCartItemQuantityLocal(productId));
+        const updatedCart = cart.map((item) =>
+          item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+        );
+        setCart(updatedCart);
+      } else {
+        toast.error("Quantity cannot exceed available stock.");
+      }
     }
-  }
-};
+  };
 
   const handleCheckQuantity = (productId: number) => {
     const productInCart = products.find(item => item.id === productId);
     return productInCart ? productInCart.quantity : 0;
   };
 
-  const handleCheckout = async () => {
-    if (!user || !token) {
-      toast.error('Please log in to add items to the wishlist');
-      return;
-    }
-    try {
-      for (let item of cart) {
-        await dispatch(buyProduct(item.productId)).unwrap();
-      }
+  const handleCheckout = async (productId: number, quantity: number) => {
+  if (!user || !token) {
+    toast.error('Please log in to add items to the wishlist');
+    return;
+  }
+  try {
+    await dispatch(buyProduct({ productId, quantity })).unwrap();
 
-      cart.forEach((item) => {
-        handleRemoveFromCart(item.id);
-      });
+    setCart((prevCart) => prevCart.filter((item) => item.productId !== productId));
 
-      toast.success('Checkout successful', {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    } catch (error) {
-      toast.error('Checkout failed! Please try again later.', {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
+    toast.success('Checkout successful', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+    await loadProducts();
+  } catch (error) {
+    toast.error('Checkout failed! Please try again later.', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+};
 
   const filteredProducts = products
     ? products

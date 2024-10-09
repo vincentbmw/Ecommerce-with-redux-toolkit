@@ -230,11 +230,16 @@ export const buyProduct = async (req, res) => {
       });
     }
 
-    product.quantity = Math.max(0, product.quantity - quantity);
+    product.quantity -= quantity;
+    if (product.quantity <= 0 || product.quantity === undefined) {
+      product.quantity = 0;
+    }
+
     db.saveProducts(products);
 
     return res.status(200).json({
       message: "Product purchased successfully",
+      product: product,
       status: 200,
       ok: true
     });
@@ -242,6 +247,7 @@ export const buyProduct = async (req, res) => {
     return handleServerError(res, error);
   }
 };
+
 
 export const getProducts = async (req, res) => {
   try {

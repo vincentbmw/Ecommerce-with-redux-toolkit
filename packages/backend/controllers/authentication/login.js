@@ -40,7 +40,7 @@ const login = async (req, res) => {
 			{ email: user.email, username: user.username, userId: user.id },
 			config.TOKEN,
 			{
-				expiresIn: 600, // 10 minutes in seconds
+				expiresIn: 600,
 			},
 		);
 		

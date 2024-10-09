@@ -8,7 +8,7 @@ interface NavBarProps {
   handleRemove: (id: number) => void;
   handleDecrease: (id: number) => void;
   handleIncrease: (id: number) => void;
-  handleCheckout: () => void;
+  handleCheckout: (productId: number, quantity: number) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({

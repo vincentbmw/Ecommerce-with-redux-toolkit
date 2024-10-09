@@ -6,7 +6,7 @@ const CartButton: React.FC<{
   handleRemove: (id: number) => void,
   handleDecrease: (id: number) => void,
   handleIncrease: (id: number) => void,
-  handleCheckout: () => void,
+  handleCheckout: (productId: number, quantity: number) => void,
 }> = ({ cart, handleRemove, handleDecrease, handleIncrease, handleCheckout }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -71,12 +71,15 @@ const CartButton: React.FC<{
                     ))}
                   </ul>
                   <div className="flex justify-end mt-4">
-                    <button
-                      onClick={handleCheckout}
-                      className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
-                    >
-                      Checkout
-                    </button>
+                    {cart.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => handleCheckout(item.product.id, item.quantity)}
+                        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+                      >
+                        Checkout
+                      </button>
+                    ))}
                   </div>
                 </>
               ) : (
