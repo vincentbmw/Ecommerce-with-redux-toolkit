@@ -11,6 +11,7 @@ Welcome to the **E-Commerce Application** project! This project is a full-stack 
 - **Dynamic Quantity Management**: Users can add products to their cart while ensuring the quantity doesn't exceed the available stock.
 - **Checkout**: Users can proceed to checkout, completing their purchase in a streamlined way.
 - **No Results Animation**: When no products match the search criteria, an animated graphic is shown to improve the user experience.
+- **Authorisation**: Can't Access other Dashboard(Admin & Seller) if the role are Shopper
 
 ### 2. Admin Dashboard
 - **User Management**: The admin dashboard allows admins to create, edit, and delete users.
