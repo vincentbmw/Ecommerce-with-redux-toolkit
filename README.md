@@ -48,8 +48,8 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/yourusername/ecommerce-application.git
-   cd ecommerce-application
+   https://github.com/vincentbmw/Ecommerce-with-redux-toolkit.git
+   cd ecommerce-with-redux-toolkit
    ```
 
 2. **Install dependencies**
