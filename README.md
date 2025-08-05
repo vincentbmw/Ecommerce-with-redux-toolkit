@@ -2,6 +2,8 @@
 
 Welcome to the **E-Commerce Application** project! This project is a full-stack web application built with React, Redux Toolkit, TypeScript, Node.js, and Express.js. It provides a shopping platform for users, and it includes role-based access for admins and sellers to manage products and users efficiently.
 
+https://github.com/user-attachments/assets/9d66880b-e2d0-41c2-afd4-dbce508be908
+
 ## Features
 
 ### 1. Shop Page
